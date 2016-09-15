@@ -71,8 +71,8 @@
   width: 100%;
   height: 100%;
 
-  outline: 1px solid #39f;
-  outline-color: rgba(51, 153, 255, .75);
+  outline: 1px solid #0e90d2;
+  outline-color: #0e90d2;
 }
 
 .cropper-dashed {
@@ -217,7 +217,7 @@
   height: 5px;
 
   opacity: .75;
-  background-color: #39f;
+  background-color: #0e90d2;
 
   filter: alpha(opacity=75);
 }
@@ -306,7 +306,7 @@
   content: ' ';
 
   opacity: 0;
-  background-color: #39f;
+  background-color: #0e90d2;
 
   filter: alpha(opacity=0);
 }
