@@ -3,15 +3,14 @@
 
 [Cropper 插件](https://github.com/stevenyuysy/Cropper) Amaze UI 样式移植。
 
-- [使用示例]()
-- [API 文档]()
+- [使用示例](https://stevenyuysy.github.io/Cropper/)
+- [API 文档](https://github.com/fengyuanchen/cropper)
 
 **使用说明：**
 
 1. 获取 Amaze UI cropper
 
-  - [直接下载]
-  - 使用 NPM: `npm install amazeui-cropper`
+  - [直接下载](https://github.com/StevenYuysy/Cropper/archive/master.zip)
 
 2. 在 Amaze UI 样式之后引入 cropper 样式（`dist` 目录下的 CSS）：
 
