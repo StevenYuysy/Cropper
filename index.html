@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Cropper</title>
+        <link rel="stylesheet" href="amazeui.min.css">
+        <link rel="stylesheet" href="amazeui.cropper.css">
+        <script src="jquery.min.js" charset="utf-8"></script>
+        <script src="cropper.min.js" charset="utf-8"></script>
+        <style media="screen">
+            #image {
+                width: 100%;
+            }
+            .am-thumbnail {
+                padding: 0;
+            }
+            .preview-sm {
+                width: 180px;
+                height: 180px;
+                overflow: hidden;
+            }
+            .preview-md {
+                width: 128px;
+                height: 128px;
+                overflow: hidden;
+            }
+            .preview-lg {
+                width: 64px;
+                height: 64px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="am-g">
+            <div class="am-u-md-9">
+                <!-- <h3 class="page-header">Demo:</h3> -->
+                <div class="img-container">
+                    <img id="image" src="img/picture.jpg" alt="Picture">
+                </div>
+            </div>
+            <div class="am-u-md-3">
+                <!-- <h3 class="page-header">Preview:</h3> -->
+                <div class="am-thumbnail img-preview preview-sm"></div>
+                <div class="am-thumbnail img-preview preview-md"></div>
+                <div class="am-thumbnail img-preview preview-lg"></div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-form-group am-form-file">
+                <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                    <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                    <input type="file" id="inputImage" name="file" accept="image/*">
+            </div>
+            <div id="file-list"></div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $(function() {
+            'use strict';
+
+            var $image = $('#image');
+            $image.cropper({
+                aspectRatio: '1',
+                preview: '.img-preview',
+                zoomOnWheel: false,
+            })
+
+            // import
+            var $inputImage = $('#inputImage');
+            var URL = window.URL || window.webkitURL;
+            var blobURL;
+
+            if (URL) {
+                $inputImage.change(function () {
+                   var files = this.files;
+                   var file;
+                   console.log(files);
+
+                   if (files && files.length) {
+                       file = files[0];
+
+                       if (/^image\/\w+$/.test(file.type)) {
+                            blobURL = URL.createObjectURL(file);
+                            console.log(blobURL);
+                            $image.one('built.cropper', function () {
+
+                                // Revoke when load complete
+                               URL.revokeObjectURL(blobURL);
+                            }).cropper('reset').cropper('replace', blobURL);
+                            $inputImage.val('');
+                        } else {
+                            window.alert('Please choose an image file.');
+                        }
+                    }
+                });
+            } else {
+                $inputImage.prop('disabled', true).parent().addClass('disabled');
+            }
+        })
+    </script>
+</html>
