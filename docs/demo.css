@@ -1,0 +1,31 @@
+#image {
+    width: 100%;
+    min-height: 200px;
+    max-height: 516px;
+}
+.img-container {
+    margin-bottom: 10px;
+    max-width: 100%;
+    max-height: 100%;
+}
+.am-img-preview {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.preview-lg {
+    width: 180px;
+    height: 180px;
+}
+.preview-md {
+    width: 128px;
+    height: 128px;
+}
+.preview-sm {
+    width: 64px;
+    height: 64px;
+}
+.am-modal-bd > canvas {
+    max-width: 100%;
+}
